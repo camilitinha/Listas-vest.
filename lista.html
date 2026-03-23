@@ -8,234 +8,531 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
---amarelo:#f5c842;
---amarelo2:#e6b325;
---laranja:#e8892a;
---verde:#6dbf6d;
---roxo:#a07abf;
---cinza-bg:#f6f5f2;
---cinza-borda:#e3dfd7;
---texto:#2a2520;
---branco:#ffffff;
---amarelo-soft:#fff4cc;
+  --amarelo:#f5c842;
+  --amarelo2:#f0b800;
+  --laranja:#e8892a;
+  --verde:#6dbf6d;
+  --roxo:#a07abf;
+  --cinza-bg:#f4f3ee;
+  --cinza-borda:#e0ddd5;
+  --texto:#2a2520;
+  --branco:#ffffff;
 }
 body{
-font-family:'Nunito Sans',sans-serif;
-background:var(--cinza-bg);
-color:var(--texto);
-padding:2rem 1rem 5rem;
-min-height:100vh;
+  font-family:'Nunito Sans',sans-serif;
+  font-weight:400;
+  background:var(--cinza-bg);
+  color:var(--texto);
+  padding:2rem 1rem 5rem;
+  min-height:100vh;
 }
 .wrap{max-width:740px;margin:0 auto;}
+/* TOPO estilo Babi */
 .topo{
-background:var(--amarelo);
-border-radius:16px 16px 0 0;
-padding:1.2rem 1.6rem 1rem;
-display:flex;
-align-items:center;
-gap:14px;
+  background:var(--amarelo);
+  border-radius:16px 16px 0 0;
+  padding:1.2rem 1.6rem 1rem;
+  margin-bottom:0;
+  display:flex;
+  align-items:center;
+  gap:14px;
 }
 .topo-logo{
-width:44px;height:44px;border-radius:50%;
-background:var(--branco);
-display:flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:50%;
+  background:var(--branco);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
 }
+.topo-logo svg{width:28px;height:28px;}
 .topo-texto h1{
-font-family:'Raleway',sans-serif;
-font-weight:700;
-font-size:18px;
+  font-family:'Raleway',sans-serif;
+  font-weight:700;
+  font-size:18px;
+  color:var(--texto);
+  letter-spacing:0.01em;
+  line-height:1.2;
 }
-.topo-texto p{font-size:11px;color:#6b5c30;}
+.topo-texto p{font-size:11px;color:#6b5c30;margin-top:2px;}
+/* Cards */
 .card{
-background:var(--branco);
-border:1px solid var(--cinza-borda);
-padding:1.2rem 1.4rem;
+  background:var(--branco);
+  border:1px solid var(--cinza-borda);
+  border-radius:0;
+  padding:1.2rem 1.4rem;
+  margin-bottom:0;
+  border-top:none;
 }
+.card:first-of-type{border-top:1px solid var(--cinza-borda);}
+.card:last-of-type{border-radius:0 0 12px 12px;margin-bottom:12px;}
 .field-row{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;}
 .field{display:flex;flex-direction:column;gap:4px;}
-label{font-size:10px;font-weight:700;color:#999;}
+label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#999;}
 input[type=text],textarea{
-font-family:'Nunito Sans',sans-serif;
-font-size:13px;
-padding:8px 11px;
-border-radius:8px;
-border:1px solid var(--cinza-borda);
-background:#ffffff;
-transition:.2s;
+  font-family:'Nunito Sans',sans-serif;
+  font-size:13px;
+  font-weight:400;
+  padding:8px 11px;
+  border-radius:8px;
+  border:1px solid var(--cinza-borda);
+  background:#fafaf8;
+  color:var(--texto);
+  width:100%;
+  transition:border-color .2s;
+  resize:none;
 }
-input:focus,textarea:focus{
-outline:none;
-border-color:var(--amarelo2);
-box-shadow:0 0 0 2px var(--amarelo-soft);
-}
+input[type=text]:focus,textarea:focus{outline:none;border-color:var(--amarelo2);}
+input[type=text]::placeholder,textarea::placeholder{color:#ccc;}
+
+/* Seção questões */
 .sec-header{
-display:flex;align-items:center;justify-content:space-between;
-padding:0.7rem 1.4rem;
-background:var(--amarelo);
-border-radius:12px 12px 0 0;
-margin-top:12px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.7rem 1.4rem;
+  background:var(--amarelo);
+  border-radius:12px 12px 0 0;
+  margin-top:12px;
 }
-.sec-header span{font-family:'Raleway';font-weight:700;font-size:13px;}
+.sec-header span{font-family:'Raleway',sans-serif;font-weight:700;font-size:13px;color:var(--texto);}
 .hint-paste{
-font-size:11.5px;
-padding:0.6rem 1.4rem 0.8rem;
-background:var(--branco);
-border:1px solid var(--cinza-borda);
+  font-size:11.5px;color:#888;
+  padding:0.6rem 1.4rem 0.8rem;
+  background:var(--branco);
+  border:1px solid var(--cinza-borda);
+  border-top:none;
+  line-height:1.5;
 }
+.hint-paste strong{color:var(--laranja);}
+/* Bloco de questão */
 .bloco{
-background:var(--branco);
-border:1px solid var(--cinza-borda);
-border-top:none;
-padding:1rem 1.4rem;
-position:relative;
+  background:var(--branco);
+  border:1px solid var(--cinza-borda);
+  border-top:none;
+  padding:1rem 1.4rem;
+  position:relative;
 }
-.bloco-top{display:flex;gap:8px;margin-bottom:8px;}
+.bloco:last-of-type{border-radius:0 0 12px 12px;}
+.bloco-top{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;}
 .bloco-num{
-background:var(--amarelo);
-font-weight:700;
-font-size:11px;
-padding:3px 9px;
-border-radius:20px;
+  background:var(--amarelo);
+  color:var(--texto);
+  font-family:'Raleway',sans-serif;
+  font-weight:700;
+  font-size:11px;
+  padding:3px 9px;
+  border-radius:20px;
+  flex-shrink:0;
+  margin-top:2px;
 }
+/* Textarea de colar */
 .paste-area{
-width:100%;
-font-size:12.5px;
-padding:8px;
-border-radius:8px;
-border:1px solid var(--cinza-borda);
-background:#ffffff;
+  width:100%;
+  font-family:'Nunito Sans',sans-serif;
+  font-size:12.5px;
+  padding:8px 10px;
+  border-radius:8px;
+  border:1px solid var(--cinza-borda);
+  background:#fafaf8;
+  color:var(--texto);
+  min-height:80px;
+  resize:vertical;
+  line-height:1.5;
+  transition:border-color .2s;
 }
+.paste-area:focus{outline:none;border-color:var(--amarelo2);}
+.paste-area::placeholder{color:#bbb;font-size:12px;}
+/* Alternativas parseadas */
 .alts-parsed{margin-top:8px;display:flex;flex-direction:column;gap:4px;}
-.alt-p{display:flex;gap:6px;font-size:12.5px;}
+.alt-p{display:flex;align-items:flex-start;gap:6px;font-size:12.5px;line-height:1.45;}
 .alt-p.correta-p .alt-badge{background:var(--verde);color:#fff;}
 .alt-badge{
-min-width:22px;height:22px;border-radius:50%;
-background:#f0ede5;
-display:flex;align-items:center;justify-content:center;
-font-size:10px;font-weight:700;color:#888;
+  min-width:22px;height:22px;border-radius:50%;
+  background:#f0ede5;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;color:#888;
+  flex-shrink:0;margin-top:1px;
 }
+/* Seletor correta */
 .correta-row{
-margin-top:10px;padding-top:8px;
-border-top:1px dashed var(--cinza-borda);
-display:flex;gap:8px;
+  margin-top:10px;padding-top:8px;
+  border-top:1px dashed var(--cinza-borda);
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
 }
+.correta-row > span{font-size:11px;color:#aaa;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;}
 .opcoes{display:flex;gap:5px;}
 .r-inp{display:none;}
 .r-label{
-width:26px;height:26px;border-radius:50%;
-border:1px solid var(--cinza-borda);
-display:flex;align-items:center;justify-content:center;
-font-size:10px;cursor:pointer;
+  width:26px;height:26px;border-radius:50%;
+  border:1px solid var(--cinza-borda);background:#fafaf8;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10.5px;font-weight:700;color:#aaa;
+  cursor:pointer;transition:background .15s,border-color .15s,color .15s;
+  user-select:none;
 }
-.r-inp:checked + .r-label{background:var(--amarelo);}
+.r-inp:checked + .r-label{background:var(--amarelo);border-color:var(--amarelo2);color:var(--texto);}
+.r-label:hover{background:#fef5d0;}
 .btn-del{
-position:absolute;top:10px;right:12px;
-background:none;border:none;font-size:17px;color:#ddd;cursor:pointer;
+  position:absolute;top:10px;right:12px;
+  background:none;border:none;font-size:17px;
+  color:#ddd;cursor:pointer;line-height:1;padding:2px;
+  transition:color .15s;
 }
+.btn-del:hover{color:var(--laranja);}
+/* Botões */
 .btn-add{
-font-size:12px;
-padding:8px 20px;border-radius:20px;
-border:2px dashed var(--amarelo2);
-background:transparent;
-cursor:pointer;
+  font-family:'Raleway',sans-serif;
+  font-size:12px;font-weight:700;
+  padding:8px 20px;border-radius:20px;
+  border:2px dashed var(--amarelo2);
+  background:transparent;color:#a07820;
+  cursor:pointer;margin-top:10px;
+  transition:background .15s;display:inline-block;
 }
+.btn-add:hover{background:#fef9e0;}
+.rodape{display:flex;align-items:center;gap:14px;margin-top:8px;}
 .btn-gerar{
-font-size:13px;
-padding:11px 28px;border-radius:24px;
-border:none;background:var(--amarelo);
-cursor:pointer;
+  font-family:'Raleway',sans-serif;
+  font-size:13px;font-weight:700;
+  padding:11px 28px;border-radius:24px;
+  border:none;background:var(--amarelo);color:var(--texto);
+  cursor:pointer;letter-spacing:0.02em;
+  transition:background .15s,transform .1s;display:inline-block;
+  box-shadow:0 2px 8px rgba(245,200,66,0.4);
 }
 .btn-gerar:hover{background:var(--amarelo2);}
-.status{font-size:12px;}
+.btn-gerar:active{transform:scale(.97);}
+.status{font-size:12px;color:#bbb;}
 .status.ok{color:#4a9a4a;font-weight:700;}
 .status.erro{color:#c04040;font-weight:700;}
+@media(max-width:520px){.field-row{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="topo">
-<div class="topo-logo"></div>
-<div class="topo-texto">
-<h1>Gerador de Lista</h1>
-<p>cole as questões completas · gabarito embaralhado · PDF em 2 colunas</p>
-</div>
-</div>
-<div class="card">
-<div class="field-row">
-<div class="field"><label>Título</label><input type="text" id="titulo"></div>
-<div class="field"><label>Disciplina</label><input type="text" id="disciplina"></div>
-<div class="field"><label>Banca</label><input type="text" id="banca"></div>
-</div>
-</div>
-<div class="sec-header">
-<span>Questões</span>
-<button type="button" class="btn-add" id="btn-add">+ nova questão</button>
-</div>
-<div class="hint-paste">
-Cole a questão completa com alternativas a) b) c) d) e)
-</div>
-<div id="lista"></div>
-<div class="rodape">
-<button type="button" class="btn-gerar" id="btn-gerar">Gerar PDF</button>
-<span class="status" id="status"></span>
-</div>
+  <!-- TOPO -->
+  <div class="topo">
+    <div class="topo-logo">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="14" fill="#f5c842"/>
+        <path d="M10 22 Q16 10 22 22" stroke="#2a2520" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <circle cx="16" cy="11" r="2.5" fill="#2a2520"/>
+      </svg>
+    </div>
+    <div class="topo-texto">
+      <h1>Gerador de Lista</h1>
+      <p>cole as questões completas · gabarito embaralhado · PDF em 2 colunas</p>
+    </div>
+  </div>
+  <!-- INFO -->
+  <div class="card" style="border-radius:0;border-top:1px solid var(--cinza-borda);">
+    <div class="field-row">
+      <div class="field"><label>Título da lista</label><input type="text" id="titulo" placeholder="ex: Lista 20 – Soluções"/></div>
+      <div class="field"><label>Disciplina</label><input type="text" id="disciplina" placeholder="ex: Química"/></div>
+      <div class="field"><label>Banca</label><input type="text" id="banca" placeholder="ex: ENEM"/></div>
+    </div>
+  </div>
+  <!-- QUESTÕES -->
+  <div class="sec-header" style="margin-top:16px;">
+    <span>Questões</span>
+    <button type="button" class="btn-add" id="btn-add" style="margin:0;padding:5px 14px;font-size:11px;">+ nova questão</button>
+  </div>
+  <div class="hint-paste">
+    Cole a questão completa na caixa — o sistema detecta as alternativas <strong>a) b) c) d) e)</strong> automaticamente. Marque qual é a correta.
+  </div>
+  <div id="lista"></div>
+  <div class="rodape" style="margin-top:14px;">
+    <button type="button" class="btn-gerar" id="btn-gerar">Gerar PDF</button>
+    <span class="status" id="status"></span>
+  </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
 (function(){
-var idx=0;
-var LETRAS=['A','B','C','D','E'];
-function parseQuestao(txt){
-var text=txt.trim();
-var re=/(?:^|\n)\s*\(?\s*([a-eA-E])\s*[\)\.]?\s+/g;
-var matches=[];
-var m;
-while((m=re.exec(text))!==null){
-matches.push({idx:m.index,letter:m[1].toUpperCase(),len:m[0].length});
-}
-if(matches.length===0)return{enunciado:text,alts:{}};
-var enunciado=text.substring(0,matches[0].idx).trim();
-var alts={};
-for(var i=0;i<matches.length;i++){
-var start=matches[i].idx+matches[i].len;
-var end=i+1<matches.length?matches[i+1].idx:text.length;
-alts[matches[i].letter]=text.substring(start,end).trim().replace(/\n/g,' ');
-}
-return{enunciado:enunciado,alts:alts};
-}
-function addQuestao(){
-var id=idx++;
-var num=document.querySelectorAll('.bloco').length+1;
-var div=document.createElement('div');
-div.className='bloco';div.id='bloco'+id;
-var radiosHTML=LETRAS.map(function(l){
-return'<input type="radio" class="r-inp" name="c'+id+'" id="r'+id+l+'" value="'+l+'"'+(l==='A'?' checked':'')+'><label class="r-label" for="r'+id+l+'">'+l+'</label>';
-}).join('');
-div.innerHTML='<button class="btn-del" id="del'+id+'">×</button><div class="bloco-top"><span class="bloco-num">Q'+num+'</span><textarea class="paste-area" id="paste'+id+'"></textarea></div><div class="alts-parsed" id="alts'+id+'"></div><div class="correta-row"><span>Correta:</span><div class="opcoes">'+radiosHTML+'</div></div>';
-document.getElementById('lista').appendChild(div);
-document.getElementById('paste'+id).addEventListener('input',function(){renderAlts(id);});
-LETRAS.forEach(function(l){
-document.getElementById('r'+id+l).addEventListener('change',function(){renderAlts(id);});
-});
-document.getElementById('del'+id).onclick=function(){div.remove();};
-}
-function renderAlts(id){
-var txt=document.getElementById('paste'+id).value;
-var parsed=parseQuestao(txt);
-var container=document.getElementById('alts'+id);
-container.innerHTML='';
-var sel=document.querySelector('input[name="c'+id+'"]:checked');
-var correta=sel?sel.value:'A';
-LETRAS.forEach(function(l){
-if(!parsed.alts[l])return;
-var div=document.createElement('div');
-div.className='alt-p'+(l===correta?' correta-p':'');
-div.innerHTML='<span class="alt-badge">'+l+'</span><span>'+parsed.alts[l]+'</span>';
-container.appendChild(div);
-});
-}
-document.getElementById('btn-add').onclick=addQuestao;
-addQuestao();
+  var idx=0;
+  var LETRAS=['A','B','C','D','E'];
+  /* ---- Parse da questão colada ---- */
+  function parseQuestao(txt){
+    /* Normaliza separadores de alternativas: a) / a. / (a) */
+    var text=txt.trim();
+    /* Divide nas alternativas */
+    var re=/(?:^|\n)\s*(?:\(?\s*([aAbBcCdDeE])\s*[\)\.])\s*/g;
+    var parts=[];
+    var lastIdx=0;
+    var m;
+    var matches=[];
+    var tmp=new RegExp(re.source,'gm');
+    while((m=tmp.exec(text))!==null){
+      matches.push({idx:m.index,letter:m[1].toUpperCase(),len:m[0].length});
+    }
+    if(matches.length===0) return {enunciado:text,alts:{}};
+    var enunciado=text.substring(0,matches[0].idx).trim();
+    var alts={};
+    for(var i=0;i<matches.length;i++){
+      var start=matches[i].idx+matches[i].len;
+      var end=i+1<matches.length?matches[i+1].idx:text.length;
+      alts[matches[i].letter]=text.substring(start,end).trim().replace(/\n/g,' ');
+    }
+    return {enunciado:enunciado,alts:alts};
+  }
+  function addQuestao(prefill){
+    var id=idx++;
+    var num=document.querySelectorAll('.bloco').length+1;
+    var div=document.createElement('div');
+    div.className='bloco'; div.id='bloco'+id;
+    var radiosHTML=LETRAS.map(function(l){
+      return '<input type="radio" class="r-inp" name="c'+id+'" id="r'+id+l+'" value="'+l+'"'+(l==='A'?' checked':'')+'>'
+            +'<label class="r-label" for="r'+id+l+'">'+l+'</label>';
+    }).join('');
+    div.innerHTML=
+      '<button type="button" class="btn-del" id="del'+id+'">×</button>'
+      +'<div class="bloco-top">'
+        +'<span class="bloco-num">Q'+num+'</span>'
+        +'<textarea class="paste-area" id="paste'+id+'" placeholder="Cole aqui a questão completa com as alternativas a) b) c) d) e)..."></textarea>'
+      +'</div>'
+      +'<div class="alts-parsed" id="alts'+id+'"></div>'
+      +'<div class="correta-row">'
+        +'<span>Correta:</span>'
+        +'<div class="opcoes">'+radiosHTML+'</div>'
+      +'</div>';
+    document.getElementById('lista').appendChild(div);
+    var ta=document.getElementById('paste'+id);
+    if(prefill){ ta.value=prefill; renderAlts(id); }
+    ta.addEventListener('input',function(){ renderAlts(id); });
+    ta.addEventListener('paste',function(){ setTimeout(function(){ renderAlts(id); },50); });
+    LETRAS.forEach(function(l){
+      var r=document.getElementById('r'+id+l);
+      if(r) r.addEventListener('change',function(){ renderAlts(id); });
+    });
+    document.getElementById('del'+id).addEventListener('click',function(){
+      document.getElementById('bloco'+id).remove();
+      renumerar();
+    });
+  }
+  function renderAlts(id){
+    var txt=document.getElementById('paste'+id).value;
+    var parsed=parseQuestao(txt);
+    var container=document.getElementById('alts'+id);
+    container.innerHTML='';
+    var sel=document.querySelector('input[name="c'+id+'"]:checked');
+    var correta=sel?sel.value:'A';
+    LETRAS.forEach(function(l){
+      if(!parsed.alts[l]) return;
+      var div=document.createElement('div');
+      div.className='alt-p'+(l===correta?' correta-p':'');
+      div.innerHTML='<span class="alt-badge">'+l+'</span><span>'+parsed.alts[l]+'</span>';
+      container.appendChild(div);
+    });
+  }
+  function renumerar(){
+    document.querySelectorAll('.bloco-num').forEach(function(el,i){
+      el.textContent='Q'+(i+1);
+    });
+  }
+  function embaralhar(arr){
+    for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;}
+    return arr;
+  }
+  function coletar(){
+    var qs=[];
+    document.querySelectorAll('.bloco').forEach(function(b){
+      var id=b.id.replace('bloco','');
+      var txt=((document.getElementById('paste'+id)||{}).value||'').trim();
+      if(!txt) return;
+      var parsed=parseQuestao(txt);
+      if(!parsed.enunciado) return;
+      var sel=document.querySelector('input[name="c'+id+'"]:checked');
+      qs.push({enunciado:parsed.enunciado,alts:parsed.alts,correta:sel?sel.value:'A'});
+    });
+    return qs;
+  }
+  /* ===================== PDF 2 COLUNAS estilo Babi ===================== */
+  function gerarPDF(){
+    if(!window.jspdf){alert('Aguarde o jsPDF.');return;}
+    var jsPDF=window.jspdf.jsPDF;
+    var titulo=(document.getElementById('titulo').value||'Lista de Exercícios').trim();
+    var disc=(document.getElementById('disciplina').value||'').trim();
+    var banca=(document.getElementById('banca').value||'').trim();
+    var statusEl=document.getElementById('status');
+    var qs=embaralhar(coletar());
+    if(qs.length===0){statusEl.textContent='adicione ao menos uma questão!';statusEl.className='status erro';return;}
+    var doc=new jsPDF({unit:'mm',format:'a4'});
+    /* Medidas */
+    var PW=210,PH=297;
+    var MT=10,MB=12,ML=12,MR=12;
+    var GAP=6;
+    var COLW=(PW-ML-MR-GAP)/2;
+    var HDR=20;
+    var BODY_TOP=MT+HDR+2;
+    var BOTTOM=PH-MB;
+    /* Cores Babi */
+    var AMARELO=[245,200,66];
+    var AMARELO2=[230,180,30];
+    var TEXTO=[30,25,20];
+    var CINZA_BG=[248,247,244];
+    var CINZA_LN=[220,215,208];
+    var VERDE=[90,175,90];
+    var LARANJA=[220,130,40];
+    var pag=1;
+    var col=0;
+    var y=BODY_TOP;
+    function colX(){ return ML+col*(COLW+GAP); }
+    /* Cabeçalho estilo Babi */
+    function renderHeader(sec){
+      /* Barra amarela */
+      doc.setFillColor(AMARELO[0],AMARELO[1],AMARELO[2]);
+      doc.rect(ML,MT,PW-ML-MR,HDR,'F');
+      /* Ícone círculo branco */
+      doc.setFillColor(255,255,255);
+      doc.circle(ML+9,MT+HDR/2,5,'F');
+      doc.setFillColor(AMARELO[0],AMARELO[1],AMARELO[2]);
+      doc.circle(ML+9,MT+HDR/2,3,'F');
+      /* Título */
+      doc.setFont('helvetica','bold');
+      doc.setFontSize(11);
+      doc.setTextColor(TEXTO[0],TEXTO[1],TEXTO[2]);
+      doc.text(titulo,ML+18,MT+8);
+      /* Sub */
+      var sub=[disc,banca].filter(Boolean).join('  ·  ');
+      doc.setFont('helvetica','normal');
+      doc.setFontSize(8);
+      doc.setTextColor(100,80,20);
+      doc.text(sub||'',ML+18,MT+14);
+      /* Seção (questões / gabarito) no canto direito */
+      doc.setFont('helvetica','bold');
+      doc.setFontSize(8);
+      doc.setTextColor(80,60,10);
+      doc.text((sec||'').toUpperCase(),PW-MR,MT+HDR/2+3,{align:'right'});
+      /* Linha divisória central */
+      var cx=ML+COLW+GAP/2;
+      doc.setDrawColor(CINZA_LN[0],CINZA_LN[1],CINZA_LN[2]);
+      doc.setLineWidth(0.15);
+      doc.line(cx,BODY_TOP,cx,BOTTOM);
+    }
+    function renderFooter(total){
+      doc.setFont('helvetica','normal');
+      doc.setFontSize(7);
+      doc.setTextColor(180,175,165);
+      doc.text(String(pag),PW/2,PH-4,{align:'center'});
+      if(total!==undefined) doc.text('total: '+total+' questões',PW-MR,PH-4,{align:'right'});
+    }
+    function newPage(sec,total){
+      renderFooter(total);
+      doc.addPage(); pag++;
+      renderHeader(sec);
+      col=0; y=BODY_TOP;
+    }
+    function checkSpace(need,sec,total){
+      if(y+need>BOTTOM){
+        if(col===0){col=1;y=BODY_TOP;}
+        else{newPage(sec,total);}
+      }
+    }
+    /* =========== QUESTÕES =========== */
+    renderHeader('questões');
+    qs.forEach(function(q,i){
+      var cx=colX();
+      var altsFilt=LETRAS.filter(function(l){return q.alts[l];});
+      /* Calcular altura */
+      doc.setFontSize(8.5);
+      var enuncLines=doc.splitTextToSize(q.enunciado,COLW-7);
+      var altLinesAll=[];
+      altsFilt.forEach(function(l){
+        var lns=doc.splitTextToSize(l+') '+q.alts[l],COLW-9);
+        altLinesAll.push(lns);
+      });
+      var altH=altLinesAll.reduce(function(a,lns){return a+lns.length*4.3+0.8;},0);
+      var blockH=enuncLines.length*4.6+altH+9;
+      checkSpace(blockH,'questões',undefined);
+      cx=colX();
+      /* Fundo alternado */
+      if(i%2===0){
+        doc.setFillColor(CINZA_BG[0],CINZA_BG[1],CINZA_BG[2]);
+        doc.rect(cx,y,COLW,blockH,'F');
+      }
+      /* Número em negrito */
+      doc.setFont('helvetica','bold');
+      doc.setFontSize(8.5);
+      doc.setTextColor(TEXTO[0],TEXTO[1],TEXTO[2]);
+      doc.text((i+1)+'.',cx+1.5,y+5.2);
+      /* Enunciado */
+      doc.setFont('helvetica','normal');
+      doc.setFontSize(8.5);
+      doc.setTextColor(TEXTO[0],TEXTO[1],TEXTO[2]);
+      doc.text(enuncLines,cx+7,y+5.2);
+      var iy=y+enuncLines.length*4.6+7.5;
+      /* Alternativas */
+      altsFilt.forEach(function(l,ai){
+        var lns=altLinesAll[ai];
+        /* letra em negrito */
+        doc.setFont('helvetica','bold');
+        doc.setFontSize(8);
+        doc.setTextColor(TEXTO[0],TEXTO[1],TEXTO[2]);
+        doc.text(l+')',cx+3,iy);
+        /* texto normal */
+        doc.setFont('helvetica','normal');
+        doc.setFontSize(8);
+        doc.setTextColor(40,35,30);
+        /* sem a letra na linha */
+        var bodyLns=doc.splitTextToSize(q.alts[l],COLW-11);
+        doc.text(bodyLns,cx+9,iy);
+        iy+=bodyLns.length*4.3+0.8;
+      });
+      /* Linha separadora */
+      doc.setDrawColor(CINZA_LN[0],CINZA_LN[1],CINZA_LN[2]);
+      doc.setLineWidth(0.1);
+      doc.line(cx,y+blockH,cx+COLW,y+blockH);
+      y+=blockH+0.5;
+    });
+    /* =========== GABARITO =========== */
+    newPage('gabarito',qs.length);
+    /* Faixa de título */
+    doc.setFillColor(AMARELO[0],AMARELO[1],AMARELO[2]);
+    doc.rect(ML,y,PW-ML-MR,8,'F');
+    doc.setFont('helvetica','bold');
+    doc.setFontSize(9);
+    doc.setTextColor(TEXTO[0],TEXTO[1],TEXTO[2]);
+    doc.text('GABARITO',PW/2,y+5.5,{align:'center'});
+    y+=10;
+    /* Grade 5 colunas */
+    var GCOLS=5;
+    var GCW=(PW-ML-MR)/GCOLS;
+    var GRH=8;
+    qs.forEach(function(q,i){
+      var row=Math.floor(i/GCOLS);
+      var ci=i%GCOLS;
+      if(i>0&&ci===0) y+=GRH;
+      if(y+GRH>BOTTOM){newPage('gabarito',qs.length);y+=0;}
+      var cellX=ML+ci*GCW;
+      /* Fundo alternado por linha */
+      if(row%2===0){
+        doc.setFillColor(CINZA_BG[0],CINZA_BG[1],CINZA_BG[2]);
+        doc.rect(cellX,y,GCW,GRH,'F');
+      }
+      doc.setDrawColor(CINZA_LN[0],CINZA_LN[1],CINZA_LN[2]);
+      doc.setLineWidth(0.1);
+      doc.rect(cellX,y,GCW,GRH);
+      /* Número */
+      doc.setFont('helvetica','bold');
+      doc.setFontSize(8);
+      doc.setTextColor(TEXTO[0],TEXTO[1],TEXTO[2]);
+      doc.text(String(i+1),cellX+3,y+5.2);
+      /* Pílula resposta */
+      doc.setFillColor(AMARELO[0],AMARELO[1],AMARELO[2]);
+      doc.roundedRect(cellX+GCW/2-5,y+1.5,10,5,2,2,'F');
+      doc.setFont('helvetica','bold');
+      doc.setFontSize(8);
+      doc.setTextColor(TEXTO[0],TEXTO[1],TEXTO[2]);
+      doc.text(q.correta,cellX+GCW/2,y+5.5,{align:'center'});
+    });
+    renderFooter(qs.length);
+    var nome=titulo.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9\-]/g,'')+'.pdf';
+    doc.save(nome||'lista.pdf');
+    statusEl.textContent='PDF gerado com '+qs.length+' questão(ões)!';
+    statusEl.className='status ok';
+  }
+  document.getElementById('btn-add').addEventListener('click',function(){addQuestao('');});
+  document.getElementById('btn-gerar').addEventListener('click',gerarPDF);
+  /* Inicia com 2 questões em branco */
+  addQuestao('');
+  addQuestao('');
 })();
 </script>
 </body>
