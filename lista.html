@@ -1,82 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lista de Exercícios</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--amarelo:#f5c842;--amarelo2:#e6b325;--amarelo-soft:#fff4cc;--laranja:#e8892a;--verde:#5cad5c;--roxo:#a07abf;--bg:#f6f5f2;--card:#ffffff;--borda:#e3dfd7;--texto:#2a2520;--texto-suave:#7a7268}
-body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--texto);padding:2rem 1rem 5rem;min-height:100vh}
+:root{--amarelo:#f5c842;--amarelo2:#e6b325;--amarelo-soft:#fff4cc;--laranja:#e8892a;--verde:#5cad5c;--roxo:#a07abf;--bg:#f6f5f2;--card:#ffffff;--borda:#e3dfd7;--texto:#2a2520}
+body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--texto);padding:2rem 1rem 5rem}
 .wrap{max-width:740px;margin:0 auto}
-.topo{background:var(--amarelo);border-radius:16px 16px 0 0;padding:1.2rem 1.6rem 1rem;display:flex;align-items:center;gap:14px}
-.topo-logo{width:44px;height:44px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center}
-.topo-texto h1{font-family:'Raleway';font-weight:700;font-size:18px}
-.topo-texto p{font-size:11px;color:#6b5c30}
-.card{background:var(--card);border:1px solid var(--borda);padding:1.2rem 1.4rem}
+.topo{background:var(--amarelo);border-radius:16px 16px 0 0;padding:1.2rem 1.6rem;display:flex;gap:14px}
+.card{background:var(--card);border:1px solid var(--borda);padding:1.2rem}
 .field-row{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px}
-.field{display:flex;flex-direction:column;gap:4px}
-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#999}
-input,textarea{font-family:'Nunito Sans';font-size:13px;padding:8px 11px;border-radius:8px;border:1px solid var(--borda);background:#fff;width:100%}
+input,textarea{padding:8px;border-radius:8px;border:1px solid var(--borda);width:100%}
 input:focus,textarea:focus{outline:none;border-color:var(--amarelo2);box-shadow:0 0 0 2px var(--amarelo-soft)}
 .sec-header{display:flex;justify-content:space-between;padding:.7rem 1.4rem;background:var(--amarelo);margin-top:12px}
-.hint-paste{font-size:11.5px;color:#888;padding:.6rem 1.4rem;background:#fff;border:1px solid var(--borda)}
-.bloco{background:#fff;border:1px solid var(--borda);padding:1rem 1.4rem;position:relative;transition:.2s}
-.bloco:hover{background:var(--amarelo-soft)}
-.bloco-top{display:flex;gap:8px}
-.bloco-num{background:var(--amarelo);padding:3px 9px;border-radius:20px;font-size:11px}
-.paste-area{width:100%;font-size:12.5px;padding:8px;border-radius:8px;border:1px solid var(--borda)}
-.alts-parsed{margin-top:8px;display:flex;flex-direction:column;gap:4px}
+.bloco{background:#fff;border:1px solid var(--borda);padding:1rem;margin-top:6px}
 .alt-p{display:flex;gap:6px;padding:4px;border-radius:6px}
 .alt-p.correta-p{background:#e9f7ea;border:1px solid var(--verde)}
-.alt-badge{min-width:22px;height:22px;border-radius:50%;background:#eee7dc;display:flex;align-items:center;justify-content:center;font-size:10px}
-.correta-row{margin-top:10px;padding-top:8px;border-top:1px dashed var(--borda);display:flex;gap:8px}
-.r-inp{display:none}
-.r-label{width:26px;height:26px;border-radius:50%;border:1px solid var(--borda);display:flex;align-items:center;justify-content:center;font-size:10px;cursor:pointer}
-.r-inp:checked+.r-label{background:var(--amarelo)}
-.btn-add{border:2px dashed var(--amarelo2);padding:6px 14px;border-radius:20px;background:none;cursor:pointer}
-.btn-gerar{padding:11px 28px;border-radius:24px;border:none;background:var(--amarelo);cursor:pointer}
-.btn-gerar:hover{background:var(--amarelo2)}
-.status.ok{color:var(--verde)}
-.status.erro{color:#c04040}
+.btn-gerar{padding:10px 24px;border:none;background:var(--amarelo);cursor:pointer}
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="topo">
-<div class="topo-logo"></div>
-<div class="topo-texto">
-<h1>Gerador de Lista</h1>
-<p>cole as questões completas · gabarito embaralhado · PDF em 2 colunas</p>
-</div>
-</div>
+<div class="topo"><h2>Gerador de Lista</h2></div>
 <div class="card">
 <div class="field-row">
-<div class="field">
-<label>Título</label>
-<input type="text" id="titulo">
-</div>
-<div class="field">
-<label>Disciplina</label>
-<input type="text" id="disciplina">
-</div>
-<div class="field">
-<label>Banca</label>
-<input type="text" id="banca">
-</div>
+<input type="text" id="titulo" placeholder="Título">
+<input type="text" id="disciplina" placeholder="Disciplina">
+<input type="text" id="banca" placeholder="Banca">
 </div>
 </div>
 <div class="sec-header">
 <span>Questões</span>
-<button id="btn-add" class="btn-add">+ nova</button>
+<button id="btn-add">+ nova</button>
 </div>
-<div class="hint-paste">Cole a questão completa com alternativas a) b) c)...</div>
 <div id="lista"></div>
-<div style="margin-top:10px">
 <button id="btn-gerar" class="btn-gerar">Gerar PDF</button>
-<span id="status"></span>
-</div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
@@ -91,9 +52,7 @@ var m;
 while((m=re.exec(text))!==null){
 matches.push({idx:m.index,letter:m[1].toUpperCase(),len:m[0].length});
 }
-if(matches.length===0){
-return{enunciado:text,alts:{}};
-}
+if(matches.length===0){return{enunciado:text,alts:{}};}
 var enunciado=text.substring(0,matches[0].idx).trim();
 var alts={};
 for(var i=0;i<matches.length;i++){
@@ -107,23 +66,48 @@ function addQuestao(){
 var id=idx++;
 var div=document.createElement('div');
 div.className='bloco';
-div.innerHTML='<textarea class="paste-area" id="paste'+id+'"></textarea><div id="alts'+id+'"></div>';
+div.innerHTML='<textarea id="q'+id+'" placeholder="Cole a questão"></textarea><div id="alts'+id+'"></div>';
 document.getElementById('lista').appendChild(div);
-document.getElementById('paste'+id).addEventListener('input',function(){render(id);});
+document.getElementById('q'+id).addEventListener('input',function(){render(id);});
 }
 function render(id){
-var txt=document.getElementById('paste'+id).value;
+var txt=document.getElementById('q'+id).value;
 var p=parseQuestao(txt);
 var c=document.getElementById('alts'+id);
 c.innerHTML='';
 Object.keys(p.alts).forEach(function(l){
 var d=document.createElement('div');
 d.className='alt-p';
-d.innerHTML='<span class="alt-badge">'+l+'</span>'+p.alts[l];
+d.innerHTML='<b>'+l+')</b> '+p.alts[l];
 c.appendChild(d);
 });
 }
+function coletar(){
+var qs=[];
+document.querySelectorAll('textarea').forEach(function(t){
+var p=parseQuestao(t.value);
+if(p.enunciado){qs.push(p);}
+});
+return qs;
+}
+function gerarPDF(){
+var jsPDF=window.jspdf.jsPDF;
+var doc=new jsPDF();
+var y=10;
+var qs=coletar();
+qs.forEach(function(q,i){
+doc.text((i+1)+'. '+q.enunciado,10,y);
+y+=6;
+Object.keys(q.alts).forEach(function(l){
+doc.text(l+') '+q.alts[l],12,y);
+y+=5;
+});
+y+=4;
+});
+doc.save('lista.pdf');
+}
 document.getElementById('btn-add').onclick=addQuestao;
+document.getElementById('btn-gerar').onclick=gerarPDF;
 addQuestao();
 })();
 </script>
