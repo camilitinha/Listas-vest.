@@ -1,6 +1,5 @@
 /* ===== Fontes & Reset ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 body {
   font-family: 'DM Sans', sans-serif;
   font-weight: 300;
@@ -9,19 +8,16 @@ body {
   min-height: 100vh;
   padding: 2.5rem 1rem 4rem;
 }
-
 /* ===== Layout ===== */
 .wrap {
   max-width: 700px;
   margin: 0 auto;
 }
-
 /* ===== Topo ===== */
 .topo {
   text-align: center;
   margin-bottom: 2rem;
 }
-
 h1 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 36px;
@@ -31,14 +27,12 @@ h1 {
   letter-spacing: 0.01em;
   margin-bottom: 6px;
 }
-
 .sub {
   font-size: 13px;
   color: #b09e96;
   font-weight: 300;
   letter-spacing: 0.02em;
 }
-
 /* ===== Card ===== */
 .card {
   background: #fff9f6;
@@ -47,16 +41,13 @@ h1 {
   padding: 1.5rem;
   margin-bottom: 1rem;
 }
-
 /* ===== Fields ===== */
 .field-row {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   gap: 12px;
 }
-
 .field { display: flex; flex-direction: column; gap: 5px; }
-
 label {
   font-size: 11px;
   font-weight: 500;
@@ -64,7 +55,6 @@ label {
   text-transform: lowercase;
   color: #c4998e;
 }
-
 input[type="text"],
 input[type="text"].alt-input {
   font-family: 'DM Sans', sans-serif;
@@ -78,18 +68,15 @@ input[type="text"].alt-input {
   width: 100%;
   transition: border-color 0.2s;
 }
-
 input[type="text"]:focus,
 input[type="text"].alt-input:focus {
   outline: none;
   border-color: #d4a097;
 }
-
 input[type="text"]::placeholder,
 input[type="text"].alt-input::placeholder {
   color: #d4c4be;
 }
-
 /* ===== Hint ===== */
 .hint {
   font-size: 12px;
@@ -97,7 +84,6 @@ input[type="text"].alt-input::placeholder {
   margin-bottom: 1rem;
   font-weight: 300;
 }
-
 /* ===== Bloco de questão ===== */
 .bloco {
   background: #fff;
@@ -107,7 +93,6 @@ input[type="text"].alt-input::placeholder {
   margin-bottom: 10px;
   position: relative;
 }
-
 .bloco-num {
   font-family: 'Cormorant Garamond', serif;
   font-size: 13px;
@@ -116,7 +101,6 @@ input[type="text"].alt-input::placeholder {
   margin-bottom: 8px;
   letter-spacing: 0.04em;
 }
-
 .q-input {
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
@@ -130,29 +114,24 @@ input[type="text"].alt-input::placeholder {
   margin-bottom: 10px;
   transition: border-color 0.2s;
 }
-
 .q-input:focus {
   outline: none;
   border-color: #d4a097;
   background: #fff;
 }
-
 .q-input::placeholder { color: #d4c4be; }
-
 /* ===== Alternativas ===== */
 .alts {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
-
 .alt-linha {
   display: grid;
   grid-template-columns: 26px 1fr;
   align-items: center;
   gap: 8px;
 }
-
 .alt-letra {
   width: 26px;
   height: 26px;
@@ -168,18 +147,15 @@ input[type="text"].alt-input::placeholder {
   flex-shrink: 0;
   transition: background 0.2s, border-color 0.2s;
 }
-
 .alt-linha.correta .alt-letra {
   background: #e8d5d0;
   border-color: #c4998e;
   color: #7a4a40;
 }
-
 .alt-linha.correta input {
   border-color: #d4a097;
   background: #fff5f3;
 }
-
 /* ===== Seletor de correta ===== */
 .correta-row {
   display: flex;
@@ -190,22 +166,18 @@ input[type="text"].alt-input::placeholder {
   border-top: 1px solid #f5e8e4;
   flex-wrap: wrap;
 }
-
 .correta-row span {
   font-size: 12px;
   color: #c4b0aa;
   font-weight: 300;
 }
-
 .opcoes-correta {
   display: flex;
   gap: 6px;
 }
-
 .radio-correta {
   display: none;
 }
-
 .radio-label {
   width: 28px;
   height: 28px;
@@ -222,18 +194,15 @@ input[type="text"].alt-input::placeholder {
   transition: background 0.15s, border-color 0.15s, color 0.15s;
   user-select: none;
 }
-
 .radio-correta:checked + .radio-label {
   background: #c4998e;
   border-color: #c4998e;
   color: #fff;
 }
-
 .radio-label:hover {
   background: #f5e8e4;
   border-color: #d4a097;
 }
-
 /* ===== Botão remover ===== */
 .btn-del {
   position: absolute;
@@ -248,9 +217,7 @@ input[type="text"].alt-input::placeholder {
   padding: 0;
   transition: color 0.15s;
 }
-
 .btn-del:hover { color: #c4998e; }
-
 /* ===== Botões de ação ===== */
 .btn-add {
   font-family: 'DM Sans', sans-serif;
@@ -265,16 +232,13 @@ input[type="text"].alt-input::placeholder {
   margin-top: 4px;
   transition: background 0.15s;
 }
-
 .btn-add:hover { background: #fff0eb; }
-
 .rodape {
   display: flex;
   align-items: center;
   gap: 14px;
   margin-top: 0.5rem;
 }
-
 .btn-gerar {
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
@@ -288,15 +252,12 @@ input[type="text"].alt-input::placeholder {
   letter-spacing: 0.02em;
   transition: background 0.15s, transform 0.1s;
 }
-
 .btn-gerar:hover { background: #b07b6e; }
 .btn-gerar:active { transform: scale(0.97); }
-
 /* ===== Status ===== */
 .status { font-size: 13px; color: #c4b0aa; }
 .status.ok { color: #a07060; font-weight: 500; }
 .status.erro { color: #c4698e; font-weight: 500; }
-
 /* ===== Responsive ===== */
 @media (max-width: 520px) {
   .field-row { grid-template-columns: 1fr; }
