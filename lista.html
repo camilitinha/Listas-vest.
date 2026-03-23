@@ -8,89 +8,147 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --amarelo:#f5c842;
-  --amarelo2:#e6b325;
-  --laranja:#e8892a;
-  --verde:#6dbf6d;
-  --roxo:#a07abf;
-  --cinza-bg:#f6f5f2;
-  --cinza-borda:#e3dfd7;
-  --texto:#2a2520;
-  --branco:#ffffff;
-  --amarelo-soft:#fff4cc;
+--amarelo:#f5c842;
+--amarelo2:#e6b325;
+--laranja:#e8892a;
+--verde:#6dbf6d;
+--roxo:#a07abf;
+--cinza-bg:#f6f5f2;
+--cinza-borda:#e3dfd7;
+--texto:#2a2520;
+--branco:#ffffff;
+--amarelo-soft:#fff4cc;
 }
 body{
-  font-family:'Nunito Sans',sans-serif;
-  background:var(--cinza-bg);
-  color:var(--texto);
-  padding:2rem 1rem 5rem;
-  min-height:100vh;
+font-family:'Nunito Sans',sans-serif;
+background:var(--cinza-bg);
+color:var(--texto);
+padding:2rem 1rem 5rem;
+min-height:100vh;
 }
 .wrap{max-width:740px;margin:0 auto;}
 .topo{
-  background:var(--amarelo);
-  border-radius:16px 16px 0 0;
-  padding:1.2rem 1.6rem 1rem;
-  display:flex;
-  align-items:center;
-  gap:14px;
+background:var(--amarelo);
+border-radius:16px 16px 0 0;
+padding:1.2rem 1.6rem 1rem;
+display:flex;
+align-items:center;
+gap:14px;
 }
 .topo-logo{
-  width:44px;height:44px;border-radius:50%;
-  background:var(--branco);
-  display:flex;align-items:center;justify-content:center;
+width:44px;height:44px;border-radius:50%;
+background:var(--branco);
+display:flex;align-items:center;justify-content:center;
 }
 .topo-texto h1{
-  font-family:'Raleway',sans-serif;
-  font-weight:700;
-  font-size:18px;
+font-family:'Raleway',sans-serif;
+font-weight:700;
+font-size:18px;
 }
 .topo-texto p{font-size:11px;color:#6b5c30;}
 .card{
-  background:var(--branco);
-  border:1px solid var(--cinza-borda);
-  padding:1.2rem 1.4rem;
+background:var(--branco);
+border:1px solid var(--cinza-borda);
+padding:1.2rem 1.4rem;
 }
 .field-row{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;}
 .field{display:flex;flex-direction:column;gap:4px;}
 label{font-size:10px;font-weight:700;color:#999;}
 input[type=text],textarea{
-  font-family:'Nunito Sans',sans-serif;
-  font-size:13px;
-  padding:8px 11px;
-  border-radius:8px;
-  border:1px solid var(--cinza-borda);
-  background:#fff;
-  transition:.2s;
+font-family:'Nunito Sans',sans-serif;
+font-size:13px;
+padding:8px 11px;
+border-radius:8px;
+border:1px solid var(--cinza-borda);
+background:#ffffff;
+transition:.2s;
 }
 input:focus,textarea:focus{
-  outline:none;
-  border-color:var(--amarelo2);
-  box-shadow:0 0 0 2px var(--amarelo-soft);
+outline:none;
+border-color:var(--amarelo2);
+box-shadow:0 0 0 2px var(--amarelo-soft);
 }
 .sec-header{
-  display:flex;justify-content:space-between;
-  padding:.7rem 1.4rem;
-  background:var(--amarelo);
-  margin-top:12px;
+display:flex;align-items:center;justify-content:space-between;
+padding:0.7rem 1.4rem;
+background:var(--amarelo);
+border-radius:12px 12px 0 0;
+margin-top:12px;
 }
+.sec-header span{font-family:'Raleway';font-weight:700;font-size:13px;}
 .hint-paste{
-  font-size:11.5px;
-  padding:.6rem 1.4rem;
-  background:var(--branco);
-  border:1px solid var(--cinza-borda);
+font-size:11.5px;
+padding:0.6rem 1.4rem 0.8rem;
+background:var(--branco);
+border:1px solid var(--cinza-borda);
 }
 .bloco{
-  background:var(--branco);
-  border:1px solid var(--cinza-borda);
-  padding:1rem 1.4rem;
+background:var(--branco);
+border:1px solid var(--cinza-borda);
+border-top:none;
+padding:1rem 1.4rem;
+position:relative;
 }
-.paste-area{background:#fff;}
+.bloco-top{display:flex;gap:8px;margin-bottom:8px;}
+.bloco-num{
+background:var(--amarelo);
+font-weight:700;
+font-size:11px;
+padding:3px 9px;
+border-radius:20px;
+}
+.paste-area{
+width:100%;
+font-size:12.5px;
+padding:8px;
+border-radius:8px;
+border:1px solid var(--cinza-borda);
+background:#ffffff;
+}
+.alts-parsed{margin-top:8px;display:flex;flex-direction:column;gap:4px;}
+.alt-p{display:flex;gap:6px;font-size:12.5px;}
 .alt-p.correta-p .alt-badge{background:var(--verde);color:#fff;}
+.alt-badge{
+min-width:22px;height:22px;border-radius:50%;
+background:#f0ede5;
+display:flex;align-items:center;justify-content:center;
+font-size:10px;font-weight:700;color:#888;
+}
+.correta-row{
+margin-top:10px;padding-top:8px;
+border-top:1px dashed var(--cinza-borda);
+display:flex;gap:8px;
+}
+.opcoes{display:flex;gap:5px;}
+.r-inp{display:none;}
+.r-label{
+width:26px;height:26px;border-radius:50%;
+border:1px solid var(--cinza-borda);
+display:flex;align-items:center;justify-content:center;
+font-size:10px;cursor:pointer;
+}
 .r-inp:checked + .r-label{background:var(--amarelo);}
-.btn-add{border:2px dashed var(--amarelo2);}
-.btn-gerar{background:var(--amarelo);}
+.btn-del{
+position:absolute;top:10px;right:12px;
+background:none;border:none;font-size:17px;color:#ddd;cursor:pointer;
+}
+.btn-add{
+font-size:12px;
+padding:8px 20px;border-radius:20px;
+border:2px dashed var(--amarelo2);
+background:transparent;
+cursor:pointer;
+}
+.btn-gerar{
+font-size:13px;
+padding:11px 28px;border-radius:24px;
+border:none;background:var(--amarelo);
+cursor:pointer;
+}
 .btn-gerar:hover{background:var(--amarelo2);}
+.status{font-size:12px;}
+.status.ok{color:#4a9a4a;font-weight:700;}
+.status.erro{color:#c04040;font-weight:700;}
 </style>
 </head>
 <body>
@@ -111,13 +169,15 @@ input:focus,textarea:focus{
 </div>
 <div class="sec-header">
 <span>Questões</span>
-<button id="btn-add">+ nova</button>
+<button type="button" class="btn-add" id="btn-add">+ nova questão</button>
 </div>
-<div class="hint-paste">Cole a questão completa com alternativas a) b) c)...</div>
+<div class="hint-paste">
+Cole a questão completa com alternativas a) b) c) d) e)
+</div>
 <div id="lista"></div>
 <div class="rodape">
-<button id="btn-gerar">Gerar PDF</button>
-<span id="status"></span>
+<button type="button" class="btn-gerar" id="btn-gerar">Gerar PDF</button>
+<span class="status" id="status"></span>
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -143,6 +203,39 @@ alts[matches[i].letter]=text.substring(start,end).trim().replace(/\n/g,' ');
 }
 return{enunciado:enunciado,alts:alts};
 }
+function addQuestao(){
+var id=idx++;
+var num=document.querySelectorAll('.bloco').length+1;
+var div=document.createElement('div');
+div.className='bloco';div.id='bloco'+id;
+var radiosHTML=LETRAS.map(function(l){
+return'<input type="radio" class="r-inp" name="c'+id+'" id="r'+id+l+'" value="'+l+'"'+(l==='A'?' checked':'')+'><label class="r-label" for="r'+id+l+'">'+l+'</label>';
+}).join('');
+div.innerHTML='<button class="btn-del" id="del'+id+'">×</button><div class="bloco-top"><span class="bloco-num">Q'+num+'</span><textarea class="paste-area" id="paste'+id+'"></textarea></div><div class="alts-parsed" id="alts'+id+'"></div><div class="correta-row"><span>Correta:</span><div class="opcoes">'+radiosHTML+'</div></div>';
+document.getElementById('lista').appendChild(div);
+document.getElementById('paste'+id).addEventListener('input',function(){renderAlts(id);});
+LETRAS.forEach(function(l){
+document.getElementById('r'+id+l).addEventListener('change',function(){renderAlts(id);});
+});
+document.getElementById('del'+id).onclick=function(){div.remove();};
+}
+function renderAlts(id){
+var txt=document.getElementById('paste'+id).value;
+var parsed=parseQuestao(txt);
+var container=document.getElementById('alts'+id);
+container.innerHTML='';
+var sel=document.querySelector('input[name="c'+id+'"]:checked');
+var correta=sel?sel.value:'A';
+LETRAS.forEach(function(l){
+if(!parsed.alts[l])return;
+var div=document.createElement('div');
+div.className='alt-p'+(l===correta?' correta-p':'');
+div.innerHTML='<span class="alt-badge">'+l+'</span><span>'+parsed.alts[l]+'</span>';
+container.appendChild(div);
+});
+}
+document.getElementById('btn-add').onclick=addQuestao;
+addQuestao();
 })();
 </script>
 </body>
