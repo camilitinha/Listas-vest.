@@ -1,22 +1,52 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Gerador de Listas</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gerador de Lista de Vestibular</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
+  <div class="wrap">
+    <h1>Gerador de Lista de Vestibular</h1>
+    <p class="sub">Monte suas questões abaixo e gere um PDF com gabarito embaralhado.</p>
 
-<h1>Gerador de Exercícios</h1>
-
-<textarea id="exercicios" placeholder="Digite os exercícios aqui..."></textarea>
-
-<textarea id="gabarito" placeholder="Digite o gabarito aqui..."></textarea>
-
-<button onclick="gerarPDF()">Gerar PDF</button>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="script.js"></script>
-
+    <div class="card">
+      <label>Título da lista</label>
+      <input type="text" id="titulo" value="Lista de Exercícios" />
+      <div class="meta-grid">
+        <div>
+          <label>Disciplina</label>
+          <input type="text" id="disciplina" placeholder="ex: Matemática" />
+        </div>
+        <div>
+          <label>Banca / Vestibular</label>
+          <input type="text" id="banca" placeholder="ex: ENEM 2024" />
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="tabs">
+        <button class="tab active" onclick="switchTab('simples')">Simples (Certo/Errado)</button>
+        <button class="tab" onclick="switchTab('alternativas')">Múltipla escolha (A–D)</button>
+      </div>
+      <div id="pane-simples" class="pane active">
+        <p class="hint">Uma questão por linha: <strong>Enunciado</strong> + selecione Certo/Errado</p>
+        <div id="lista-simples"></div>
+        <button class="btn-add" onclick="addSimples()">+ Adicionar questão</button>
+      </div>
+      <div id="pane-alternativas" class="pane">
+        <p class="hint">Preencha o enunciado, as alternativas A–D e marque a correta.</p>
+        <div id="lista-alt"></div>
+        <button class="btn-add" onclick="addAlternativa()">+ Adicionar questão</button>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn-gerar" id="btn-pdf" onclick="gerarPDF()">Gerar PDF</button>
+      <span class="status" id="status"></span>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
