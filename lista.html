@@ -4,415 +4,535 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Lista de Exercícios</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --amarelo:#f5c842;
+  --amarelo2:#f0b800;
+  --laranja:#e8892a;
+  --verde:#6dbf6d;
+  --roxo:#a07abf;
+  --cinza-bg:#f4f3ee;
+  --cinza-borda:#e0ddd5;
+  --texto:#2a2520;
+  --branco:#ffffff;
+}
 body{
-  font-family:'DM Sans',sans-serif;
-  font-weight:300;
-  background:#fdf5f0;
-  color:#3a2a26;
-  padding:2.5rem 1rem 5rem;
+  font-family:'Nunito Sans',sans-serif;
+  font-weight:400;
+  background:var(--cinza-bg);
+  color:var(--texto);
+  padding:2rem 1rem 5rem;
   min-height:100vh;
 }
-.wrap{max-width:680px;margin:0 auto;}
-/* Topo */
-.topo{text-align:center;margin-bottom:2.2rem;}
-h1{
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;
-  font-size:38px;
-  font-weight:400;
-  color:#b8806e;
-  letter-spacing:0.02em;
-  margin-bottom:6px;
+.wrap{max-width:740px;margin:0 auto;}
+/* TOPO estilo Babi */
+.topo{
+  background:var(--amarelo);
+  border-radius:16px 16px 0 0;
+  padding:1.2rem 1.6rem 1rem;
+  margin-bottom:0;
+  display:flex;
+  align-items:center;
+  gap:14px;
 }
-.sub{font-size:13px;color:#c4aca4;letter-spacing:0.03em;}
+.topo-logo{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--branco);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.topo-logo svg{width:28px;height:28px;}
+.topo-texto h1{
+  font-family:'Raleway',sans-serif;
+  font-weight:700;
+  font-size:18px;
+  color:var(--texto);
+  letter-spacing:0.01em;
+  line-height:1.2;
+}
+.topo-texto p{font-size:11px;color:#6b5c30;margin-top:2px;}
 /* Cards */
 .card{
-  background:#fffaf7;
-  border:1px solid #edddd6;
-  border-radius:18px;
-  padding:1.4rem 1.5rem;
-  margin-bottom:12px;
+  background:var(--branco);
+  border:1px solid var(--cinza-borda);
+  border-radius:0;
+  padding:1.2rem 1.4rem;
+  margin-bottom:0;
+  border-top:none;
 }
-/* Campos de texto */
+.card:first-of-type{border-top:1px solid var(--cinza-borda);}
+.card:last-of-type{border-radius:0 0 12px 12px;margin-bottom:12px;}
 .field-row{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;}
-.field{display:flex;flex-direction:column;gap:5px;}
-label{
-  font-size:10.5px;
-  font-weight:500;
-  letter-spacing:0.1em;
-  text-transform:uppercase;
-  color:#c9a89e;
-}
-input[type=text]{
-  font-family:'DM Sans',sans-serif;
-  font-size:13.5px;
-  font-weight:300;
-  padding:9px 12px;
-  border-radius:10px;
-  border:1px solid #edddd6;
-  background:#fff;
-  color:#3a2a26;
+.field{display:flex;flex-direction:column;gap:4px;}
+label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#999;}
+input[type=text],textarea{
+  font-family:'Nunito Sans',sans-serif;
+  font-size:13px;
+  font-weight:400;
+  padding:8px 11px;
+  border-radius:8px;
+  border:1px solid var(--cinza-borda);
+  background:#fafaf8;
+  color:var(--texto);
   width:100%;
   transition:border-color .2s;
+  resize:none;
 }
-input[type=text]:focus{outline:none;border-color:#c9917f;}
-input[type=text]::placeholder{color:#ddd0ca;}
-/* Hint */
-.hint{font-size:12px;color:#cbb9b2;margin-bottom:1.1rem;}
+input[type=text]:focus,textarea:focus{outline:none;border-color:var(--amarelo2);}
+input[type=text]::placeholder,textarea::placeholder{color:#ccc;}
+/* Seção questões */
+.sec-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.7rem 1.4rem;
+  background:var(--amarelo);
+  border-radius:12px 12px 0 0;
+  margin-top:12px;
+}
+.sec-header span{font-family:'Raleway',sans-serif;font-weight:700;font-size:13px;color:var(--texto);}
+.hint-paste{
+  font-size:11.5px;color:#888;
+  padding:0.6rem 1.4rem 0.8rem;
+  background:var(--branco);
+  border:1px solid var(--cinza-borda);
+  border-top:none;
+  line-height:1.5;
+}
+.hint-paste strong{color:var(--laranja);}
 /* Bloco de questão */
 .bloco{
-  background:#fff;
-  border:1px solid #edddd6;
-  border-radius:14px;
-  padding:1.1rem 1.2rem 1.1rem 1.1rem;
-  margin-bottom:10px;
+  background:var(--branco);
+  border:1px solid var(--cinza-borda);
+  border-top:none;
+  padding:1rem 1.4rem;
   position:relative;
 }
+.bloco:last-of-type{border-radius:0 0 12px 12px;}
+.bloco-top{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;}
 .bloco-num{
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;
-  font-size:13px;
-  color:#c9917f;
-  margin-bottom:8px;
+  background:var(--amarelo);
+  color:var(--texto);
+  font-family:'Raleway',sans-serif;
+  font-weight:700;
+  font-size:11px;
+  padding:3px 9px;
+  border-radius:20px;
+  flex-shrink:0;
+  margin-top:2px;
 }
-.q-input{
-  font-family:'DM Sans',sans-serif;
-  font-size:13.5px;
-  font-weight:300;
-  padding:9px 12px;
-  border-radius:10px;
-  border:1px solid #edddd6;
-  background:#fdf5f0;
-  color:#3a2a26;
+/* Textarea de colar */
+.paste-area{
   width:100%;
-  margin-bottom:10px;
-  transition:border-color .2s,background .2s;
+  font-family:'Nunito Sans',sans-serif;
+  font-size:12.5px;
+  padding:8px 10px;
+  border-radius:8px;
+  border:1px solid var(--cinza-borda);
+  background:#fafaf8;
+  color:var(--texto);
+  min-height:80px;
+  resize:vertical;
+  line-height:1.5;
+  transition:border-color .2s;
 }
-.q-input:focus{outline:none;border-color:#c9917f;background:#fff;}
-.q-input::placeholder{color:#ddd0ca;}
-
-/* Alternativas */
-.alts{display:flex;flex-direction:column;gap:6px;}
-.alt-linha{display:grid;grid-template-columns:28px 1fr;align-items:center;gap:8px;}
-.alt-letra{
-  width:28px;height:28px;border-radius:50%;
-  background:#fdf0eb;border:1px solid #edddd6;
+.paste-area:focus{outline:none;border-color:var(--amarelo2);}
+.paste-area::placeholder{color:#bbb;font-size:12px;}
+/* Alternativas parseadas */
+.alts-parsed{margin-top:8px;display:flex;flex-direction:column;gap:4px;}
+.alt-p{display:flex;align-items:flex-start;gap:6px;font-size:12.5px;line-height:1.45;}
+.alt-p.correta-p .alt-badge{background:var(--verde);color:#fff;}
+.alt-badge{
+  min-width:22px;height:22px;border-radius:50%;
+  background:#f0ede5;
   display:flex;align-items:center;justify-content:center;
-  font-size:11px;font-weight:500;color:#c9917f;
-  flex-shrink:0;transition:background .2s,border-color .2s;
+  font-size:10px;font-weight:700;color:#888;
+  flex-shrink:0;margin-top:1px;
 }
-.alt-linha.marcada .alt-letra{background:#deb8ae;border-color:#c9917f;color:#6b3a30;}
-.alt-linha.marcada input{border-color:#c9917f;background:#fff8f5;}
-
-/* Seletor de correta */
+/* Seletor correta */
 .correta-row{
-  display:flex;align-items:center;gap:8px;
-  margin-top:11px;padding-top:10px;
-  border-top:1px solid #f5e5df;flex-wrap:wrap;
+  margin-top:10px;padding-top:8px;
+  border-top:1px dashed var(--cinza-borda);
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
 }
-.correta-row > span{font-size:11.5px;color:#cbb9b2;}
+.correta-row > span{font-size:11px;color:#aaa;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;}
 .opcoes{display:flex;gap:5px;}
 .r-inp{display:none;}
 .r-label{
-  width:28px;height:28px;border-radius:50%;
-  border:1px solid #edddd6;background:#fdf5f0;
+  width:26px;height:26px;border-radius:50%;
+  border:1px solid var(--cinza-borda);background:#fafaf8;
   display:flex;align-items:center;justify-content:center;
-  font-size:11px;font-weight:500;color:#c9917f;
+  font-size:10.5px;font-weight:700;color:#aaa;
   cursor:pointer;transition:background .15s,border-color .15s,color .15s;
   user-select:none;
 }
-.r-inp:checked + .r-label{background:#c9917f;border-color:#c9917f;color:#fff;}
-.r-label:hover{background:#f5e5df;border-color:#c9917f;}
-/* Botão remover */
+.r-inp:checked + .r-label{background:var(--amarelo);border-color:var(--amarelo2);color:var(--texto);}
+.r-label:hover{background:#fef5d0;}
 .btn-del{
-  position:absolute;top:12px;right:12px;
-  background:none;border:none;font-size:18px;
-  color:#e0d0cc;cursor:pointer;line-height:1;padding:2px;
+  position:absolute;top:10px;right:12px;
+  background:none;border:none;font-size:17px;
+  color:#ddd;cursor:pointer;line-height:1;padding:2px;
   transition:color .15s;
 }
-.btn-del:hover{color:#c9917f;}
-/* Botões principais */
+.btn-del:hover{color:var(--laranja);}
+/* Botões */
 .btn-add{
-  font-family:'DM Sans',sans-serif;
-  font-size:13px;font-weight:400;
+  font-family:'Raleway',sans-serif;
+  font-size:12px;font-weight:700;
   padding:8px 20px;border-radius:20px;
-  border:1.5px dashed #d4a898;
-  background:transparent;color:#b8806e;
-  cursor:pointer;margin-top:6px;
-  transition:background .15s;
-  display:inline-block;
+  border:2px dashed var(--amarelo2);
+  background:transparent;color:#a07820;
+  cursor:pointer;margin-top:10px;
+  transition:background .15s;display:inline-block;
 }
-.btn-add:hover{background:#fff0ea;}
-.rodape{display:flex;align-items:center;gap:14px;margin-top:4px;}
+.btn-add:hover{background:#fef9e0;}
+.rodape{display:flex;align-items:center;gap:14px;margin-top:8px;}
 .btn-gerar{
-  font-family:'DM Sans',sans-serif;
-  font-size:14px;font-weight:500;
-  padding:12px 30px;border-radius:24px;
-  border:none;background:#c9917f;color:#fff;
-  cursor:pointer;letter-spacing:0.03em;
-  transition:background .15s,transform .1s;
-  display:inline-block;
+  font-family:'Raleway',sans-serif;
+  font-size:13px;font-weight:700;
+  padding:11px 28px;border-radius:24px;
+  border:none;background:var(--amarelo);color:var(--texto);
+  cursor:pointer;letter-spacing:0.02em;
+  transition:background .15s,transform .1s;display:inline-block;
+  box-shadow:0 2px 8px rgba(245,200,66,0.4);
 }
-.btn-gerar:hover{background:#b8806e;}
+.btn-gerar:hover{background:var(--amarelo2);}
 .btn-gerar:active{transform:scale(.97);}
-.status{font-size:13px;color:#cbb9b2;}
-.status.ok{color:#a07060;font-weight:500;}
-.status.erro{color:#c07080;font-weight:500;}
-@media(max-width:520px){
-  .field-row{grid-template-columns:1fr;}
-  h1{font-size:30px;}
-}
+.status{font-size:12px;color:#bbb;}
+.status.ok{color:#4a9a4a;font-weight:700;}
+.status.erro{color:#c04040;font-weight:700;}
+@media(max-width:520px){.field-row{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 <div class="wrap">
+  <!-- TOPO -->
   <div class="topo">
-    <h1>lista de exercícios</h1>
-    <p class="sub">preencha as questões e gere seu pdf com gabarito embaralhado</p>
-  </div>
-  <div class="card">
-    <div class="field-row">
-      <div class="field">
-        <label>título</label>
-        <input type="text" id="titulo" placeholder="ex: Simulado de Biologia"/>
-      </div>
-      <div class="field">
-        <label>disciplina</label>
-        <input type="text" id="disciplina" placeholder="ex: Química"/>
-      </div>
-      <div class="field">
-        <label>banca</label>
-        <input type="text" id="banca" placeholder="ex: FUVEST"/>
-      </div>
+    <div class="topo-logo">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="14" fill="#f5c842"/>
+        <path d="M10 22 Q16 10 22 22" stroke="#2a2520" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <circle cx="16" cy="11" r="2.5" fill="#2a2520"/>
+      </svg>
+    </div>
+    <div class="topo-texto">
+      <h1>Gerador de Lista</h1>
+      <p>cole as questões completas · gabarito embaralhado · PDF em 2 colunas</p>
     </div>
   </div>
-  <div class="card">
-    <p class="hint">adicione suas questões com alternativas de a a e</p>
-    <div id="lista"></div>
-    <button type="button" class="btn-add" id="btn-add">+ nova questão</button>
+  <!-- INFO -->
+  <div class="card" style="border-radius:0;border-top:1px solid var(--cinza-borda);">
+    <div class="field-row">
+      <div class="field"><label>Título da lista</label><input type="text" id="titulo" placeholder="ex: Lista 20 – Soluções"/></div>
+      <div class="field"><label>Disciplina</label><input type="text" id="disciplina" placeholder="ex: Química"/></div>
+      <div class="field"><label>Banca</label><input type="text" id="banca" placeholder="ex: ENEM"/></div>
+    </div>
   </div>
-  <div class="rodape">
-    <button type="button" class="btn-gerar" id="btn-gerar">gerar pdf</button>
+  <!-- QUESTÕES -->
+  <div class="sec-header" style="margin-top:16px;">
+    <span>Questões</span>
+    <button type="button" class="btn-add" id="btn-add" style="margin:0;padding:5px 14px;font-size:11px;">+ nova questão</button>
+  </div>
+  <div class="hint-paste">
+    Cole a questão completa na caixa — o sistema detecta as alternativas <strong>a) b) c) d) e)</strong> automaticamente. Marque qual é a correta.
+  </div>
+  <div id="lista"></div>
+  <div class="rodape" style="margin-top:14px;">
+    <button type="button" class="btn-gerar" id="btn-gerar">Gerar PDF</button>
     <span class="status" id="status"></span>
   </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
 (function(){
-  var idx = 0;
-  var LETRAS = ['A','B','C','D','E'];
-  function addQuestao(){
-    var id = idx++;
-    var num = document.querySelectorAll('.bloco').length + 1;
-    var altsHTML = LETRAS.map(function(l){
-      return '<div class="alt-linha" id="ln'+id+l+'">'
-        +'<span class="alt-letra">'+l+'</span>'
-        +'<input type="text" id="alt'+id+l+'" placeholder="alternativa '+l.toLowerCase()+'...">'
-        +'</div>';
-    }).join('');
-    var radiosHTML = LETRAS.map(function(l){
+  var idx=0;
+  var LETRAS=['A','B','C','D','E'];
+  /* ---- Parse da questão colada ---- */
+  function parseQuestao(txt){
+    /* Normaliza separadores de alternativas: a) / a. / (a) */
+    var text=txt.trim();
+    /* Divide nas alternativas */
+    var re=/(?:^|\n)\s*(?:\(?\s*([aAbBcCdDeE])\s*[\)\.])\s*/g;
+    var parts=[];
+    var lastIdx=0;
+    var m;
+    var matches=[];
+    var tmp=new RegExp(re.source,'gm');
+    while((m=tmp.exec(text))!==null){
+      matches.push({idx:m.index,letter:m[1].toUpperCase(),len:m[0].length});
+    }
+    if(matches.length===0) return {enunciado:text,alts:{}};
+    var enunciado=text.substring(0,matches[0].idx).trim();
+    var alts={};
+    for(var i=0;i<matches.length;i++){
+      var start=matches[i].idx+matches[i].len;
+      var end=i+1<matches.length?matches[i+1].idx:text.length;
+      alts[matches[i].letter]=text.substring(start,end).trim().replace(/\n/g,' ');
+    }
+    return {enunciado:enunciado,alts:alts};
+  }
+  function addQuestao(prefill){
+    var id=idx++;
+    var num=document.querySelectorAll('.bloco').length+1;
+    var div=document.createElement('div');
+    div.className='bloco'; div.id='bloco'+id;
+
+    var radiosHTML=LETRAS.map(function(l){
       return '<input type="radio" class="r-inp" name="c'+id+'" id="r'+id+l+'" value="'+l+'"'+(l==='A'?' checked':'')+'>'
-        +'<label class="r-label" for="r'+id+l+'">'+l+'</label>';
+            +'<label class="r-label" for="r'+id+l+'">'+l+'</label>';
     }).join('');
-    var div = document.createElement('div');
-    div.className = 'bloco';
-    div.id = 'bloco'+id;
-    div.innerHTML =
-      '<div class="bloco-num">questão '+num+'</div>'
-      +'<button type="button" class="btn-del" id="del'+id+'">×</button>'
-      +'<input type="text" class="q-input" id="q'+id+'" placeholder="enunciado da questão...">'
-      +'<div class="alts">'+altsHTML+'</div>'
-      +'<div class="correta-row"><span>resposta correta:</span>'
-      +'<div class="opcoes">'+radiosHTML+'</div></div>';
+    div.innerHTML=
+      '<button type="button" class="btn-del" id="del'+id+'">×</button>'
+      +'<div class="bloco-top">'
+        +'<span class="bloco-num">Q'+num+'</span>'
+        +'<textarea class="paste-area" id="paste'+id+'" placeholder="Cole aqui a questão completa com as alternativas a) b) c) d) e)..."></textarea>'
+      +'</div>'
+      +'<div class="alts-parsed" id="alts'+id+'"></div>'
+      +'<div class="correta-row">'
+        +'<span>Correta:</span>'
+        +'<div class="opcoes">'+radiosHTML+'</div>'
+      +'</div>';
     document.getElementById('lista').appendChild(div);
-    /* eventos dos radios */
+    var ta=document.getElementById('paste'+id);
+    if(prefill){ ta.value=prefill; renderAlts(id); }
+    ta.addEventListener('input',function(){ renderAlts(id); });
+    ta.addEventListener('paste',function(){ setTimeout(function(){ renderAlts(id); },50); });
     LETRAS.forEach(function(l){
-      document.getElementById('r'+id+l).addEventListener('change', function(){
-        marcar(id);
-      });
+      var r=document.getElementById('r'+id+l);
+      if(r) r.addEventListener('change',function(){ renderAlts(id); });
     });
-    /* botão remover */
-    document.getElementById('del'+id).addEventListener('click', function(){
+    document.getElementById('del'+id).addEventListener('click',function(){
       document.getElementById('bloco'+id).remove();
       renumerar();
     });
-    marcar(id);
   }
-  function marcar(id){
-    var sel = document.querySelector('input[name="c'+id+'"]:checked');
-    var correta = sel ? sel.value : 'A';
+  function renderAlts(id){
+    var txt=document.getElementById('paste'+id).value;
+    var parsed=parseQuestao(txt);
+    var container=document.getElementById('alts'+id);
+    container.innerHTML='';
+    var sel=document.querySelector('input[name="c'+id+'"]:checked');
+    var correta=sel?sel.value:'A';
     LETRAS.forEach(function(l){
-      var ln = document.getElementById('ln'+id+l);
-      if(ln) ln.classList.toggle('marcada', l===correta);
+      if(!parsed.alts[l]) return;
+      var div=document.createElement('div');
+      div.className='alt-p'+(l===correta?' correta-p':'');
+      div.innerHTML='<span class="alt-badge">'+l+'</span><span>'+parsed.alts[l]+'</span>';
+      container.appendChild(div);
     });
   }
   function renumerar(){
-    var nums = document.querySelectorAll('.bloco-num');
-    nums.forEach(function(el,i){ el.textContent='questão '+(i+1); });
+    document.querySelectorAll('.bloco-num').forEach(function(el,i){
+      el.textContent='Q'+(i+1);
+    });
   }
   function embaralhar(arr){
-    for(var i=arr.length-1;i>0;i--){
-      var j=Math.floor(Math.random()*(i+1));
-      var tmp=arr[i]; arr[i]=arr[j]; arr[j]=tmp;
-    }
+    for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;}
     return arr;
   }
   function coletar(){
     var qs=[];
     document.querySelectorAll('.bloco').forEach(function(b){
       var id=b.id.replace('bloco','');
-      var enunciado=(document.getElementById('q'+id)||{}).value||'';
-      enunciado=enunciado.trim();
-      if(!enunciado) return;
-      var alts={};
-      LETRAS.forEach(function(l){
-        alts[l]=((document.getElementById('alt'+id+l)||{}).value||'').trim();
-      });
+      var txt=((document.getElementById('paste'+id)||{}).value||'').trim();
+      if(!txt) return;
+      var parsed=parseQuestao(txt);
+      if(!parsed.enunciado) return;
       var sel=document.querySelector('input[name="c'+id+'"]:checked');
-      qs.push({enunciado:enunciado,alts:alts,correta:sel?sel.value:'A'});
+      qs.push({enunciado:parsed.enunciado,alts:parsed.alts,correta:sel?sel.value:'A'});
     });
     return qs;
   }
+  /* ===================== PDF 2 COLUNAS estilo Babi ===================== */
   function gerarPDF(){
-    if(!window.jspdf){ alert('Aguarde o jsPDF carregar.'); return; }
+    if(!window.jspdf){alert('Aguarde o jsPDF.');return;}
     var jsPDF=window.jspdf.jsPDF;
     var titulo=(document.getElementById('titulo').value||'Lista de Exercícios').trim();
     var disc=(document.getElementById('disciplina').value||'').trim();
     var banca=(document.getElementById('banca').value||'').trim();
     var statusEl=document.getElementById('status');
     var qs=embaralhar(coletar());
-    if(qs.length===0){
-      statusEl.textContent='adicione ao menos uma questão!';
-      statusEl.className='status erro';
-      return;
-    }
+    if(qs.length===0){statusEl.textContent='adicione ao menos uma questão!';statusEl.className='status erro';return;}
     var doc=new jsPDF({unit:'mm',format:'a4'});
-    var W=210,ML=15,MR=15,TW=W-ML-MR;
-    var ROSA=[185,125,110],ROSA_CL=[240,218,210],BORDA=[230,215,210];
+    /* Medidas */
+    var PW=210,PH=297;
+    var MT=10,MB=12,ML=12,MR=12;
+    var GAP=6;
+    var COLW=(PW-ML-MR-GAP)/2;
+    var HDR=20;
+    var BODY_TOP=MT+HDR+2;
+    var BOTTOM=PH-MB;
+    /* Cores Babi */
+    var AMARELO=[245,200,66];
+    var AMARELO2=[230,180,30];
+    var TEXTO=[30,25,20];
+    var CINZA_BG=[248,247,244];
+    var CINZA_LN=[220,215,208];
+    var VERDE=[90,175,90];
+    var LARANJA=[220,130,40];
     var pag=1;
-    var y=0;
-    function header(sec){
-      doc.setFillColor(ROSA_CL[0],ROSA_CL[1],ROSA_CL[2]);
-      doc.rect(ML,10,TW,10,'F');
-      doc.setFont('times','italic');
-      doc.setFontSize(12);
-      doc.setTextColor(ROSA[0],ROSA[1],ROSA[2]);
-      doc.text(titulo,ML+4,17);
-      var meta=[disc,banca].filter(Boolean).join(' · ');
-      if(meta){
+    var col=0;
+    var y=BODY_TOP;
+    function colX(){ return ML+col*(COLW+GAP); }
+    /* Cabeçalho estilo Babi */
+    function renderHeader(sec){
+      /* Barra amarela */
+      doc.setFillColor(AMARELO[0],AMARELO[1],AMARELO[2]);
+      doc.rect(ML,MT,PW-ML-MR,HDR,'F');
+      /* Ícone círculo branco */
+      doc.setFillColor(255,255,255);
+      doc.circle(ML+9,MT+HDR/2,5,'F');
+      doc.setFillColor(AMARELO[0],AMARELO[1],AMARELO[2]);
+      doc.circle(ML+9,MT+HDR/2,3,'F');
+      /* Título */
+      doc.setFont('helvetica','bold');
+      doc.setFontSize(11);
+      doc.setTextColor(TEXTO[0],TEXTO[1],TEXTO[2]);
+      doc.text(titulo,ML+18,MT+8);
+      /* Sub */
+      var sub=[disc,banca].filter(Boolean).join('  ·  ');
+      doc.setFont('helvetica','normal');
+      doc.setFontSize(8);
+      doc.setTextColor(100,80,20);
+      doc.text(sub||'',ML+18,MT+14);
+      /* Seção (questões / gabarito) no canto direito */
+      doc.setFont('helvetica','bold');
+      doc.setFontSize(8);
+      doc.setTextColor(80,60,10);
+      doc.text((sec||'').toUpperCase(),PW-MR,MT+HDR/2+3,{align:'right'});
+      /* Linha divisória central */
+      var cx=ML+COLW+GAP/2;
+      doc.setDrawColor(CINZA_LN[0],CINZA_LN[1],CINZA_LN[2]);
+      doc.setLineWidth(0.15);
+      doc.line(cx,BODY_TOP,cx,BOTTOM);
+    }
+    function renderFooter(total){
+      doc.setFont('helvetica','normal');
+      doc.setFontSize(7);
+      doc.setTextColor(180,175,165);
+      doc.text(String(pag),PW/2,PH-4,{align:'center'});
+      if(total!==undefined) doc.text('total: '+total+' questões',PW-MR,PH-4,{align:'right'});
+    }
+    function newPage(sec,total){
+      renderFooter(total);
+      doc.addPage(); pag++;
+      renderHeader(sec);
+      col=0; y=BODY_TOP;
+    }
+    function checkSpace(need,sec,total){
+      if(y+need>BOTTOM){
+        if(col===0){col=1;y=BODY_TOP;}
+        else{newPage(sec,total);}
+      }
+    }
+    /* =========== QUESTÕES =========== */
+    renderHeader('questões');
+    qs.forEach(function(q,i){
+      var cx=colX();
+      var altsFilt=LETRAS.filter(function(l){return q.alts[l];});
+      /* Calcular altura */
+      doc.setFontSize(8.5);
+      var enuncLines=doc.splitTextToSize(q.enunciado,COLW-7);
+      var altLinesAll=[];
+      altsFilt.forEach(function(l){
+        var lns=doc.splitTextToSize(l+') '+q.alts[l],COLW-9);
+        altLinesAll.push(lns);
+      });
+      var altH=altLinesAll.reduce(function(a,lns){return a+lns.length*4.3+0.8;},0);
+      var blockH=enuncLines.length*4.6+altH+9;
+      checkSpace(blockH,'questões',undefined);
+      cx=colX();
+      /* Fundo alternado */
+      if(i%2===0){
+        doc.setFillColor(CINZA_BG[0],CINZA_BG[1],CINZA_BG[2]);
+        doc.rect(cx,y,COLW,blockH,'F');
+      }
+      /* Número em negrito */
+      doc.setFont('helvetica','bold');
+      doc.setFontSize(8.5);
+      doc.setTextColor(TEXTO[0],TEXTO[1],TEXTO[2]);
+      doc.text((i+1)+'.',cx+1.5,y+5.2);
+      /* Enunciado */
+      doc.setFont('helvetica','normal');
+      doc.setFontSize(8.5);
+      doc.setTextColor(TEXTO[0],TEXTO[1],TEXTO[2]);
+      doc.text(enuncLines,cx+7,y+5.2);
+      var iy=y+enuncLines.length*4.6+7.5;
+      /* Alternativas */
+      altsFilt.forEach(function(l,ai){
+        var lns=altLinesAll[ai];
+        /* letra em negrito */
+        doc.setFont('helvetica','bold');
+        doc.setFontSize(8);
+        doc.setTextColor(TEXTO[0],TEXTO[1],TEXTO[2]);
+        doc.text(l+')',cx+3,iy);
+        /* texto normal */
         doc.setFont('helvetica','normal');
         doc.setFontSize(8);
-        doc.setTextColor(190,160,150);
-        doc.text(meta,W-MR-2,17,{align:'right'});
-      }
-      doc.setFont('helvetica','normal');
-      doc.setFontSize(8);
-      doc.setTextColor(200,175,168);
-      doc.text(sec.toUpperCase(),ML+4,26);
-      doc.setDrawColor(ROSA_CL[0],ROSA_CL[1],ROSA_CL[2]);
-      doc.line(ML,27.5,W-MR,27.5);
-    }
-    function footer(total){
-      doc.setFontSize(8);
-      doc.setTextColor(210,190,185);
-      doc.text(String(pag),W/2,289,{align:'center'});
-      if(total!==undefined) doc.text(total+' questões',W-MR,289,{align:'right'});
-    }
-    function check(need,sec){
-      if(y+need>276){
-        footer();
-        doc.addPage();
-        pag++;
-        header(sec);
-        y=31;
-      }
-    }
-    /* === QUESTÕES === */
-    header('questões');
-    y=31;
-    qs.forEach(function(q,i){
-      var linhas=doc.splitTextToSize(q.enunciado,TW-14);
-      var altsFilt=LETRAS.filter(function(l){return q.alts[l];});
-      var altH=altsFilt.reduce(function(acc,l){
-        return acc+doc.splitTextToSize(l+') '+q.alts[l],TW-20).length*5+2;
-      },0);
-      var h=linhas.length*5.5+altH+12;
-      check(h,'questões');
-      if(i%2===0){
-        doc.setFillColor(255,252,250);
-        doc.rect(ML,y,TW,h,'F');
-      }
-      doc.setDrawColor(BORDA[0],BORDA[1],BORDA[2]);
-      doc.rect(ML,y,TW,h);
-      doc.setFillColor(ROSA_CL[0],ROSA_CL[1],ROSA_CL[2]);
-      doc.rect(ML,y,10,h,'F');
-      doc.setFont('times','italic');
-      doc.setFontSize(10);
-      doc.setTextColor(ROSA[0],ROSA[1],ROSA[2]);
-      doc.text(String(i+1),ML+5,y+h/2+3,{align:'center'});
-      var iy=y+7;
-      doc.setFont('helvetica','normal');
-      doc.setFontSize(10);
-      doc.setTextColor(50,36,30);
-      doc.text(linhas,ML+13,iy);
-      iy+=linhas.length*5.5+3;
-      altsFilt.forEach(function(l){
-        var txt=l+') '+q.alts[l];
-        var lns=doc.splitTextToSize(txt,TW-20);
-        doc.setFontSize(9.5);
-        doc.setTextColor(110,85,75);
-        doc.text(lns,ML+14,iy);
-        iy+=lns.length*5+2;
+        doc.setTextColor(40,35,30);
+        /* sem a letra na linha */
+        var bodyLns=doc.splitTextToSize(q.alts[l],COLW-11);
+        doc.text(bodyLns,cx+9,iy);
+        iy+=bodyLns.length*4.3+0.8;
       });
-      y+=h+3;
+      /* Linha separadora */
+      doc.setDrawColor(CINZA_LN[0],CINZA_LN[1],CINZA_LN[2]);
+      doc.setLineWidth(0.1);
+      doc.line(cx,y+blockH,cx+COLW,y+blockH);
+      y+=blockH+0.5;
     });
-    footer();
-    /* === GABARITO === */
-    doc.addPage(); pag++;
-    header('gabarito');
-    y=31;
-    doc.setFillColor(ROSA_CL[0],ROSA_CL[1],ROSA_CL[2]);
-    doc.rect(ML,y,TW,8,'F');
-    doc.setFont('helvetica','normal');
+    /* =========== GABARITO =========== */
+    newPage('gabarito',qs.length);
+    /* Faixa de título */
+    doc.setFillColor(AMARELO[0],AMARELO[1],AMARELO[2]);
+    doc.rect(ML,y,PW-ML-MR,8,'F');
+    doc.setFont('helvetica','bold');
     doc.setFontSize(9);
-    doc.setTextColor(ROSA[0],ROSA[1],ROSA[2]);
-    doc.text('nº',ML+5,y+5.5,{align:'center'});
-    doc.text('resposta',ML+20,y+5.5);
-    y+=8;
+    doc.setTextColor(TEXTO[0],TEXTO[1],TEXTO[2]);
+    doc.text('GABARITO',PW/2,y+5.5,{align:'center'});
+    y+=10;
+    /* Grade 5 colunas */
+    var GCOLS=5;
+    var GCW=(PW-ML-MR)/GCOLS;
+    var GRH=8;
     qs.forEach(function(q,i){
-      check(8,'gabarito');
-      if(i%2===0){
-        doc.setFillColor(255,252,250);
-        doc.rect(ML,y,TW,8,'F');
+      var row=Math.floor(i/GCOLS);
+      var ci=i%GCOLS;
+      if(i>0&&ci===0) y+=GRH;
+      if(y+GRH>BOTTOM){newPage('gabarito',qs.length);y+=0;}
+      var cellX=ML+ci*GCW;
+      /* Fundo alternado por linha */
+      if(row%2===0){
+        doc.setFillColor(CINZA_BG[0],CINZA_BG[1],CINZA_BG[2]);
+        doc.rect(cellX,y,GCW,GRH,'F');
       }
-      doc.setDrawColor(BORDA[0],BORDA[1],BORDA[2]);
-      doc.rect(ML,y,TW,8);
-      doc.setFont('times','italic');
-      doc.setFontSize(10);
-      doc.setTextColor(ROSA[0],ROSA[1],ROSA[2]);
-      doc.text(String(i+1),ML+5,y+5.5,{align:'center'});
-      doc.setFillColor(ROSA[0],ROSA[1],ROSA[2]);
-      doc.roundedRect(ML+14,y+1.5,16,5,2,2,'F');
+      doc.setDrawColor(CINZA_LN[0],CINZA_LN[1],CINZA_LN[2]);
+      doc.setLineWidth(0.1);
+      doc.rect(cellX,y,GCW,GRH);
+      /* Número */
       doc.setFont('helvetica','bold');
-      doc.setFontSize(9);
-      doc.setTextColor(255,255,255);
-      doc.text(q.correta,ML+22,y+5.5,{align:'center'});
-      y+=8;
+      doc.setFontSize(8);
+      doc.setTextColor(TEXTO[0],TEXTO[1],TEXTO[2]);
+      doc.text(String(i+1),cellX+3,y+5.2);
+      /* Pílula resposta */
+      doc.setFillColor(AMARELO[0],AMARELO[1],AMARELO[2]);
+      doc.roundedRect(cellX+GCW/2-5,y+1.5,10,5,2,2,'F');
+      doc.setFont('helvetica','bold');
+      doc.setFontSize(8);
+      doc.setTextColor(TEXTO[0],TEXTO[1],TEXTO[2]);
+      doc.text(q.correta,cellX+GCW/2,y+5.5,{align:'center'});
     });
-    footer(qs.length);
+    renderFooter(qs.length);
     var nome=titulo.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9\-]/g,'')+'.pdf';
     doc.save(nome||'lista.pdf');
-    statusEl.textContent='pdf gerado com '+qs.length+' questão(ões)!';
+    statusEl.textContent='PDF gerado com '+qs.length+' questão(ões)!';
     statusEl.className='status ok';
   }
-  /* init */
-  document.getElementById('btn-add').addEventListener('click', addQuestao);
-  document.getElementById('btn-gerar').addEventListener('click', gerarPDF);
-  addQuestao();
-  addQuestao();
+  document.getElementById('btn-add').addEventListener('click',function(){addQuestao('');});
+  document.getElementById('btn-gerar').addEventListener('click',gerarPDF);
+  /* Inicia com 2 questões em branco */
+  addQuestao('');
+  addQuestao('');
 })();
 </script>
 </body>
