@@ -1,20 +1,49 @@
+function embaralhar(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 async function gerarPDF() {
   const { jsPDF } = window.jspdf;
-
   const doc = new jsPDF();
 
-  const exercicios = document.getElementById("exercicios").value;
-  const gabarito = document.getElementById("gabarito").value;
+  const input = document.getElementById("exercicios").value;
 
-  doc.setFontSize(12);
+  let linhas = input.split("\n");
 
-  doc.text("Lista de Exercícios", 10, 10);
-  doc.text(exercicios, 10, 20);
+  let questoes = linhas.map(linha => {
+    let partes = linha.split("|");
+    return {
+      pergunta: partes[0],
+      resposta: partes[1]
+    };
+  });
+
+  questoes = embaralhar(questoes);
+
+  let y = 10;
+
+  doc.text("Lista de Exercícios", 10, y);
+  y += 10;
+
+  questoes.forEach((q, index) => {
+    doc.text(`${index + 1}. ${q.pergunta}`, 10, y);
+    y += 10;
+  });
 
   doc.addPage();
+  y = 10;
 
-  doc.text("Gabarito", 10, 10);
-  doc.text(gabarito, 10, 20);
+  doc.text("Gabarito", 10, y);
+  y += 10;
+
+  questoes.forEach((q, index) => {
+    doc.text(`${index + 1}. ${q.resposta}`, 10, y);
+    y += 10;
+  });
 
   doc.save("lista.pdf");
 }
